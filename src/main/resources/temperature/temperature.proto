@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpc.smbuilding.temperature";
+option java_outer_classname = "TemperatureServiceImpl";
+
+package temperature;
+
+message CheckTemperatureRequest {
+    int32 room = 1;
+}
+
+message CheckTemperatureResponse {
+    float average = 1;
+}
+
+message TemperatureReportRequest {
+    string val = 1;
+}
+
+message TemperatureReportResponse {
+    string result = 1;
+}
+
+service TemperatureService {
+
+    // Client Streaming
+    rpc CheckTemperature(stream CheckTemperatureRequest) returns (CheckTemperatureResponse) {};
+
+    // Server Streaming
+    rpc TemperatureReport(TemperatureReportRequest) returns (stream TemperatureReportResponse) {};
+
+}

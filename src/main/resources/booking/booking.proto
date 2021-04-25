@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpc.smbuilding.booking";
+option java_outer_classname = "BookingServiceImpl";
+
+package booking;
+
+message BookingRequest{  
+	int32  numRoom = 1;
+}  
+
+message BookingResponse{  
+    string result = 1;  
+}
+
+service BookingService{  
+    rpc Booking(BookingRequest) returns (BookingResponse);  
+}  
+

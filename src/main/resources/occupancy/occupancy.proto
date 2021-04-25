@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpc.smbuilding.occupancy";
+option java_outer_classname = "OccupancyServiceImpl";
+
+package occupancy;
+
+message OccupancyManyRequest {
+    int32 room = 1;
+}
+
+message OccupancyManyResponse {
+    string result = 1;
+}
+
+service OccupancyService {
+
+    // BiDi Streaming
+    rpc OccupancyRooms(stream OccupancyManyRequest) returns (stream OccupancyManyResponse) {};
+
+}
