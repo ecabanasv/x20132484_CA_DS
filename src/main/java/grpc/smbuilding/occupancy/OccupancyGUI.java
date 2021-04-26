@@ -53,14 +53,14 @@ public class OccupancyGUI {
 	 * Create the application.
 	 */
 	public OccupancyGUI() {
-		String occupancy_service_type = "_booking._tcp.local.";
+		String occupancy_service_type = "_occupancy._tcp.local.";
 		discoverOccupancyService(occupancy_service_type);
 		
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
 
 		asyncStub = OccupancyServiceGrpc.newStub(channel);
 
-		initialize();	
+		initialize();
 
 	}
 
