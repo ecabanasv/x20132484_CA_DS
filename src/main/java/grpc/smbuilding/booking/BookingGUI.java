@@ -188,13 +188,23 @@ public class BookingGUI extends JFrame {
 				
 				int numRoom = Integer.parseInt(textRoom.getText().toString());
 				
-				BookingRequest req = BookingRequest.newBuilder().setNumRoom(numRoom).build();
-
-				BookingResponse response = blockingStub.booking(req);
-
-				textResponse.append(response.getResult() + "\n");
+				if (numRoom >= 1 && numRoom <= 10) {
 				
-				System.out.println("res: " + response.getResult());
+					BookingRequest req = BookingRequest.newBuilder().setNumRoom(numRoom).build();
+	
+					BookingResponse response = blockingStub.booking(req);
+	
+					textResponse.append(response.getResult() + "\n");
+					
+					System.out.println("res: " + response.getResult());
+				
+				}
+				
+				else {
+					
+				textResponse.append("Room not found, please enter between 1 to 10.\n");
+				
+				}
 
 			}
 		});
