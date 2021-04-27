@@ -25,8 +25,12 @@ import javax.swing.JTextField;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
-public class BookingGUI {
+public class BookingGUI extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static BookingServiceGrpc.BookingServiceBlockingStub blockingStub;
 	private ServiceInfo bookingServiceInfo;
 	private JFrame frame;
@@ -37,7 +41,7 @@ public class BookingGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BookingGUI window = new BookingGUI();
+				    BookingGUI window = new BookingGUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +55,7 @@ public class BookingGUI {
 	 */
 	public BookingGUI() {
 		String booking_service_type = "_booking._tcp.local.";
-		discoverMathService(booking_service_type);
+		discoverBookingService(booking_service_type);
 		
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
 
@@ -62,7 +66,7 @@ public class BookingGUI {
 
 	}
 
-	private void discoverMathService(String service_type) {
+	private void discoverBookingService(String service_type) {
 		
 		try {
 			// Create a JmDNS instance
