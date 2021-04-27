@@ -228,7 +228,7 @@ public class BookingGUI extends JFrame {
 				
 				else {
 					
-				textResponse.append("Room not found, please enter number of room between 1 to 10 (no decimal).\n");
+				textResponse.append("Room not found, please enter room number between 1 to 10.\n");
 				
 				}
 
