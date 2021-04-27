@@ -202,7 +202,7 @@ public class BookingGUI extends JFrame {
 				
 				else {
 					
-				textResponse.append("Room not found, please enter between 1 to 10.\n");
+				textResponse.append("Room not found, please enter number of room between 1 to 10.\n");
 				
 				}
 
