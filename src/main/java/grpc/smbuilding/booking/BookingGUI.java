@@ -5,11 +5,13 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 // IO & Net Libraries
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.NumberFormat;
 
 // jmDNS Libraries
 import javax.jmdns.JmDNS;
@@ -22,12 +24,14 @@ import javax.net.ssl.SSLException;
 // Swing Libraries
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.NumberFormatter;
 
 // gRPC Libraries
 import io.grpc.ManagedChannel;
@@ -182,7 +186,21 @@ public class BookingGUI extends JFrame {
 		
 		panel_service_1.add(lblNewLabel_1);
 		
-		textRoom = new JTextField();
+        NumberFormat  format = NumberFormat.getInstance();
+        
+        format.setParseIntegerOnly(true);
+
+        NumberFormatter formatter = new NumberFormatter(format);
+        
+        formatter.setMinimum(1);
+        
+        formatter.setMaximum(10);
+        
+        formatter.setAllowsInvalid(false);
+        
+        formatter.setOverwriteMode(true); 
+		
+        JFormattedTextField textRoom = new JFormattedTextField(formatter);
 		
 		panel_service_1.add(textRoom);
 		
@@ -210,7 +228,7 @@ public class BookingGUI extends JFrame {
 				
 				else {
 					
-				textResponse.append("Room not found, please enter number of room between 1 to 10.\n");
+				textResponse.append("Room not found, please enter number of room between 1 to 10 (no decimal).\n");
 				
 				}
 
