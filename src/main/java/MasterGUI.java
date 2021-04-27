@@ -42,7 +42,7 @@ public class MasterGUI {
 	private void initialize() {
 		MasterF = new JFrame();
 		MasterF.setTitle("Mini Smart Building: Panel Control");
-		MasterF.setBounds(750, 0, 400, 180);
+		MasterF.setBounds(750, 0, 400, 80);
 		MasterF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		BoxLayout bl = new BoxLayout(MasterF.getContentPane(), BoxLayout.Y_AXIS);
@@ -113,61 +113,61 @@ public class MasterGUI {
 		
 		panel_service_1.add(btnButton3);
 		
-		JButton btnButton4 = new JButton("Run Booking");
-		btnButton4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							
-					        BookingServer sBooking = new BookingServer();
-							
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});   
-			}
-		});
-		
-		panel_service_1.add(btnButton4);
-		
-		JButton btnButton5 = new JButton("Run Occup.");
-		btnButton5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							
-					        OccupancyServer sOccupancy = new OccupancyServer(); 
-							
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});   
-			}
-		});
-		
-		panel_service_1.add(btnButton5);
-		
-		JButton btnButton6 = new JButton("Run Temp.");
-		btnButton6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							
-					        TemperatureServer sTemperature = new TemperatureServer(); 
-							
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});   
-			}
-		});	
-		
-		panel_service_1.add(btnButton6);
+//		JButton btnButton4 = new JButton("Run Booking");
+//		btnButton4.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				EventQueue.invokeLater(new Runnable() {
+//					public void run() {
+//						try {
+//							
+//					        BookingServer sBooking = new BookingServer();
+//							
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				});   
+//			}
+//		});
+//		
+//		panel_service_1.add(btnButton4);
+//		
+//		JButton btnButton5 = new JButton("Run Occup.");
+//		btnButton5.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				EventQueue.invokeLater(new Runnable() {
+//					public void run() {
+//						try {
+//							
+//					        OccupancyServer sOccupancy = new OccupancyServer(); 
+//							
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				});   
+//			}
+//		});
+//		
+//		panel_service_1.add(btnButton5);
+//		
+//		JButton btnButton6 = new JButton("Run Temp.");
+//		btnButton6.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				EventQueue.invokeLater(new Runnable() {
+//					public void run() {
+//						try {
+//							
+//					        TemperatureServer sTemperature = new TemperatureServer(); 
+//							
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				});   
+//			}
+//		});	
+//		
+//		panel_service_1.add(btnButton6);
 	}
 }
