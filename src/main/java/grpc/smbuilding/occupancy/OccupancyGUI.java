@@ -1,10 +1,12 @@
 package grpc.smbuilding.occupancy;
 
+// AWT Libraries
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Swing Libraries
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,52 +14,66 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+// Libraries
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Random;
+import javax.net.ssl.SSLException;
 
+// jmDNS Libraries
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
-import javax.net.ssl.SSLException;
 
-
+// gRPC Libraries
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
 public class OccupancyGUI extends JFrame {
 	
-	/**
-	 * 
-	 */
+	// For use JFrame from MasterGUI
 	private static final long serialVersionUID = 1L;
+	
+	// Blockingstub gRPC
 	private static OccupancyServiceGrpc.OccupancyServiceStub asyncStub;
+	
 	private static String result = "";
+	
 	private ServiceInfo occupancyServiceInfo;
+	
 	private JFrame frame;
+	
 	private JTextArea textResponse;
 	
 	public static void main(String[] args) throws SSLException, InterruptedException {
+		
 		EventQueue.invokeLater(new Runnable() {
+			
 			public void run() {
+				
 				try {
+					
 					OccupancyGUI window = new OccupancyGUI();
+					
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
+					
 					e.printStackTrace();
+					
 				}
 			}
 		});
 	}
 	
-	/**
-	 * Create the application.
-	 */
+	// Constructor OccupancyGUI
 	public OccupancyGUI() {
+		
 		String occupancy_service_type = "_occupancy._tcp.local.";
+		
 		discoverOccupancyService(occupancy_service_type);
 		
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
@@ -68,9 +84,11 @@ public class OccupancyGUI extends JFrame {
 
 	}
 
+	// Discover OccupancyService
 	private void discoverOccupancyService(String service_type) {
 		
 		try {
+			
 			// Create a JmDNS instance
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 
@@ -86,21 +104,30 @@ public class OccupancyGUI extends JFrame {
 					int port = occupancyServiceInfo.getPort();
 					
 					System.out.println("resolving " + service_type + " with properties ...");
+					
 					System.out.println("\t port: " + port);
+					
 					System.out.println("\t type:"+ event.getType());
+					
 					System.out.println("\t name: " + event.getName());
+					
 					System.out.println("\t description/properties: " + occupancyServiceInfo.getNiceTextString());
+					
 					System.out.println("\t host: " + occupancyServiceInfo.getHostAddresses()[0]);	
 				}
 				
 				@Override
 				public void serviceRemoved(ServiceEvent event) {
+					
 					System.out.println("Occupancy Service removed: " + event.getInfo());
+					
 				}
 				
 				@Override
 				public void serviceAdded(ServiceEvent event) {
+					
 					System.out.println("Occupancy Service added: " + event.getInfo());
+					
 				}
 			});
 			
@@ -124,13 +151,15 @@ public class OccupancyGUI extends JFrame {
 		}	
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	// Interface
 	private void initialize() {
+		
 		frame = new JFrame();
+		
 		frame.setTitle("Service: Occupancy report");
+		
 		frame.setBounds(100, 100, 500, 300);
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
@@ -138,11 +167,15 @@ public class OccupancyGUI extends JFrame {
 		frame.getContentPane().setLayout(bl);
 		
 		JPanel panel_service_1 = new JPanel();
+		
 		frame.getContentPane().add(panel_service_1);
+		
 		panel_service_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			
 		JButton btnCalculate = new JButton("Request Occupancy Report");
+		
 		btnCalculate.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
 				
 				occupancyRooms();
@@ -155,17 +188,19 @@ public class OccupancyGUI extends JFrame {
 		panel_service_1.add(btnCalculate);
 		
 		textResponse = new JTextArea(12, 40);
+		
 		textResponse .setLineWrap(true);
+		
 		textResponse.setWrapStyleWord(true);
 		
 		JScrollPane scrollPane = new JScrollPane(textResponse);
 		
-		//textResponse.setSize(new Dimension(15, 30));
 		panel_service_1.add(scrollPane);
 		
 		frame.setVisible(true);
 	}
 	
+	// occupancyRooms (Bidi streaming)
 	public static String occupancyRooms() {
 
 		StreamObserver<OccupancyManyResponse> responseObserver = new StreamObserver<OccupancyManyResponse>() {
@@ -187,6 +222,7 @@ public class OccupancyGUI extends JFrame {
 
 			@Override
 			public void onCompleted() {
+				
 				// TODO Auto-generated method stub
 				System.out.println("\nRequest completed.");
 			}
@@ -200,8 +236,11 @@ public class OccupancyGUI extends JFrame {
 			System.out.println("\n- Occupancy -\n");
 
 			for (int i = 1; i<11; i++) {
+				
 				System.out.println("Request sent for Room ("+i+")");
+				
 				requestObserver.onNext(OccupancyManyRequest.newBuilder().setRoom(i).build());
+				
 			}
 			
 			System.out.println("---");

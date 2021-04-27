@@ -1,3 +1,5 @@
+// Panel control with 3 services button: Booking, Occupancy and Temperature
+
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -53,6 +55,7 @@ public class MasterGUI {
 		MasterF.getContentPane().add(panel_service_1);
 		panel_service_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
+		// Button Booking service
 		JButton btnButton1 = new JButton("Check Rooms");
 		btnButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,6 +76,7 @@ public class MasterGUI {
 		
 		panel_service_1.add(btnButton1);
 		
+		// Button Occupancy service
 		JButton btnButton2 = new JButton("Occupancy report");
 		btnButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		
@@ -93,6 +97,7 @@ public class MasterGUI {
 		
 		panel_service_1.add(btnButton2);
 		
+		// Button Temperature service
 		JButton btnButton3 = new JButton("Temperature");
 		btnButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
