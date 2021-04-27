@@ -168,6 +168,8 @@ public class BookingGUI extends JFrame {
 		//textResponse.setSize(new Dimension(15, 30));
 		panel_service_1.add(scrollPane);
 		
+		frame.setVisible(true);
+		
 		
 		JPanel panel_service_2 = new JPanel();
 		frame.getContentPane().add(panel_service_2);

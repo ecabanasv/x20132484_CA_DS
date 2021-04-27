@@ -28,8 +28,12 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-public class OccupancyGUI {
+public class OccupancyGUI extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static OccupancyServiceGrpc.OccupancyServiceStub asyncStub;
 	private static String result = "";
 	private ServiceInfo occupancyServiceInfo;
@@ -60,7 +64,7 @@ public class OccupancyGUI {
 
 		asyncStub = OccupancyServiceGrpc.newStub(channel);
 
-		initialize();
+		initialize();	
 
 	}
 
@@ -158,6 +162,8 @@ public class OccupancyGUI {
 		
 		//textResponse.setSize(new Dimension(15, 30));
 		panel_service_1.add(scrollPane);
+		
+		frame.setVisible(true);
 		
 		
 		JPanel panel_service_2 = new JPanel();

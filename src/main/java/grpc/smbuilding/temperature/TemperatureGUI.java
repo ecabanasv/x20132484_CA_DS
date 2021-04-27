@@ -25,8 +25,12 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-public class TemperatureGUI {
+public class TemperatureGUI extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static TemperatureServiceGrpc.TemperatureServiceStub asyncStub;
 	private static String result1 = "";
 	private static String result2 = "";
@@ -164,6 +168,8 @@ public class TemperatureGUI {
 		
 		//textResponse.setSize(new Dimension(15, 30));
 		panel_service_1.add(scrollPane);
+		
+		frame.setVisible(true);
 		
 		
 		JPanel panel_service_2 = new JPanel();
