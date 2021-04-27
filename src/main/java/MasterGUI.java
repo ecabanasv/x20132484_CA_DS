@@ -8,11 +8,11 @@ import javax.net.ssl.SSLException;
 import javax.swing.*;
 
 import grpc.smbuilding.booking.BookingGUI;
-import grpc.smbuilding.booking.BookingServer;
+//import grpc.smbuilding.booking.BookingServer;
 import grpc.smbuilding.occupancy.OccupancyGUI;
-import grpc.smbuilding.occupancy.OccupancyServer;
+//import grpc.smbuilding.occupancy.OccupancyServer;
 import grpc.smbuilding.temperature.TemperatureGUI;
-import grpc.smbuilding.temperature.TemperatureServer;
+//import grpc.smbuilding.temperature.TemperatureServer;
 
 public class MasterGUI {
 	
