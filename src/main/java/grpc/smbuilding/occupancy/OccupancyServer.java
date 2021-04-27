@@ -1,27 +1,29 @@
 package grpc.smbuilding.occupancy;
 
-import grpc.smbuilding.occupancy.OccupancyServiceGrpc.OccupancyServiceImplBase;
-
+// Generic Libraries
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.net.InetAddress;
 import java.util.Properties;
 
+// jmDNS Libraries
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+// JSONSimple Libraries
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+// gRPC Libraries
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-//import io.grpc.stub.StreamObserver;
 import io.grpc.stub.StreamObserver;
+import grpc.smbuilding.occupancy.OccupancyServiceGrpc.OccupancyServiceImplBase;
 
 public class OccupancyServer extends OccupancyServiceImplBase {
 
@@ -33,7 +35,7 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 
 		occupancyserver.registerService(prop);
 
-		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
+		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50052;
 
 		try {
 
@@ -56,6 +58,7 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 		}
 	}
 
+	// Get properties from occupancy.properties file
 	private Properties getProperties() {
 
 		Properties prop = null;
@@ -76,6 +79,7 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 		return prop;
 	}
 
+	// Register Occupancy service (port: 50052)
 	private void registerService(Properties prop) {
 
 		try {
@@ -87,7 +91,7 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 			String service_name = prop.getProperty("service_name");// "example";
 			
 			// int service_port = 1234;
-			int service_port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
+			int service_port = Integer.valueOf(prop.getProperty("service_port"));// #.50052;
 
 			String service_description_properties = prop.getProperty("service_description");// "path=index.html";
 
@@ -102,9 +106,6 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 			// Wait a bit
 			Thread.sleep(1000);
 
-			// Unregister all services
-			// jmdns.unregisterAllServices();
-
 		} catch (IOException e) {
 			
 			System.out.println(e.getMessage());
@@ -117,6 +118,7 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 
 	}
 
+	// occupancyRooms function (BiDi streaming)
 	public StreamObserver<OccupancyManyRequest> occupancyRooms(StreamObserver<OccupancyManyResponse> responseObserver) {
 		
 		return new StreamObserver<OccupancyManyRequest>() {

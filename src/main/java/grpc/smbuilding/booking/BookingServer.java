@@ -1,35 +1,34 @@
 package grpc.smbuilding.booking;
 
-import grpc.smbuilding.booking.BookingServiceGrpc.BookingServiceImplBase;
-//import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
-
+// Generic Libraries
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
-//import java.util.ArrayList;
 import java.util.Properties;
-//import java.util.Random;
 
+// jmDNS Libraries
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceInfo;
 
+// JSONSimple Libraries
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+// gRPC Libraries
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import grpc.smbuilding.booking.BookingServiceGrpc.BookingServiceImplBase;
 
 public class BookingServer extends BookingServiceImplBase {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
-
 		BookingServer bookingserver = new BookingServer();
 
 		Properties prop = bookingserver.getProperties();
@@ -61,6 +60,7 @@ public class BookingServer extends BookingServiceImplBase {
 		}
 	}
 
+	// Get properties from booking.properties file
 	private Properties getProperties() {
 
 		Properties prop = null;
@@ -80,6 +80,7 @@ public class BookingServer extends BookingServiceImplBase {
 		return prop;
 	}
 
+	// Register Booking service (port 50051)
 	private void registerService(Properties prop) {
 
 		try {
@@ -107,8 +108,6 @@ public class BookingServer extends BookingServiceImplBase {
 			// Wait a bit
 			Thread.sleep(1000);
 
-			// Unregister all services
-			// jmdns.unregisterAllServices();
 
 		} catch (IOException e) {
 			
@@ -123,6 +122,7 @@ public class BookingServer extends BookingServiceImplBase {
 
 	}
 
+	// Booking function (Unary)
 	public void booking(BookingRequest request, StreamObserver<BookingResponse> responseObserver) {
 		
 		String value = "";

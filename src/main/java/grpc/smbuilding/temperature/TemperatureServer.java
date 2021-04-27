@@ -1,23 +1,29 @@
 package grpc.smbuilding.temperature;
 
-import grpc.smbuilding.temperature.TemperatureServiceGrpc.TemperatureServiceImplBase;
+// Generic Libraries
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.InetAddress;
-import java.util.Properties;
-import javax.jmdns.JmDNS;
-import javax.jmdns.ServiceInfo;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.net.InetAddress;
+import java.util.Properties;
+
+// jmDNS Libraries
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
+
+// JSONSimple Libraries
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+// gRPC Libraries
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-//import io.grpc.stub.StreamObserver;
 import io.grpc.stub.StreamObserver;
+import grpc.smbuilding.temperature.TemperatureServiceGrpc.TemperatureServiceImplBase;
 
 public class TemperatureServer extends TemperatureServiceImplBase {
 
@@ -29,7 +35,7 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 
 		temperatureserver.registerService(prop);
 
-		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
+		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50053;
 
 		try {
 
@@ -53,6 +59,7 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 		}
 	}
 
+	// Get properties from temperature.properties file
 	private Properties getProperties() {
 
 		Properties prop = null;
@@ -70,7 +77,8 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 
 		return prop;
 	}
-
+	
+	// Discover Temperature service (port: 50053)
 	private void registerService(Properties prop) {
 
 		try {
@@ -78,15 +86,17 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 
 			String service_type = prop.getProperty("service_type");// "_http._tcp.local.";
+			
 			String service_name = prop.getProperty("service_name");// "example";
-			// int service_port = 1234;
-			int service_port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
+
+			int service_port = Integer.valueOf(prop.getProperty("service_port"));// #.50053;
 
 			String service_description_properties = prop.getProperty("service_description");// "path=index.html";
 
 			// Register a service
 			ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port,
 					service_description_properties);
+			
 			jmdns.registerService(serviceInfo);
 
 			System.out.printf("Registering service with type %s and name %s \n", service_type, service_name);
@@ -94,18 +104,19 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 			// Wait a bit
 			Thread.sleep(1000);
 
-			// Unregister all services
-			// jmdns.unregisterAllServices();
-
 		} catch (IOException e) {
+			
 			System.out.println(e.getMessage());
+			
 		} catch (InterruptedException e) {
+			
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
+	// checkTemperature function (client-streaming)
 	@Override
 	public StreamObserver<CheckTemperatureRequest> checkTemperature(StreamObserver<CheckTemperatureResponse> responseObserver) {
 		
@@ -187,6 +198,7 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 		};
 	}
 	
+	 // TemperatureReport function (server-streaming)
 	 @Override
 	 public void temperatureReport(TemperatureReportRequest request, StreamObserver<TemperatureReportResponse> responseObserver) {
 		 
