@@ -52,13 +52,21 @@ public class BookingGUI extends JFrame {
 	
 	// Start BookingGUI
 	public static void main(String[] args) throws SSLException, InterruptedException {
+		
 		EventQueue.invokeLater(new Runnable() {
+			
 			public void run() {
+				
 				try {
+					
 				    BookingGUI window = new BookingGUI();
+				    
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
+					
 					e.printStackTrace();
+					
 				}
 			}
 		});
