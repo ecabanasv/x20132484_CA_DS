@@ -14,6 +14,7 @@ message BookingResponse{
     string result = 1;  
 }
 
+// Unary
 service BookingService{  
     rpc Booking(BookingRequest) returns (BookingResponse);  
 }  
