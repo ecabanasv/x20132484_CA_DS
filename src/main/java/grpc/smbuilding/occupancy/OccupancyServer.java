@@ -31,14 +31,17 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 
 		OccupancyServer occupancyserver = new OccupancyServer();
 
+		// Get services properties from /smbuilding/src/main/resources/occupancy/occupancy.properties
 		Properties prop = occupancyserver.getProperties();
 
+		// Register OccupancyService
 		occupancyserver.registerService(prop);
 
 		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50052;
 
 		try {
 
+			// Add OccupancyService
 			Server server = ServerBuilder.forPort(port).addService(occupancyserver).build().start();
 
 			System.out.println("Occupancy Server started, listening on " + port);

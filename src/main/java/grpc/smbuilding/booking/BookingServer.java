@@ -30,15 +30,18 @@ public class BookingServer extends BookingServiceImplBase {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
 		BookingServer bookingserver = new BookingServer();
-
+		
+		// Get services properties from /smbuilding/src/main/resources/booking/booking.properties
 		Properties prop = bookingserver.getProperties();
 
+		// Register BookingService
 		bookingserver.registerService(prop);
 
 		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
 
 		try {
 
+			// Add BookingService
 			Server server = ServerBuilder.forPort(port).addService(bookingserver).build().start();
 
 			System.out.println("Booking Server started, listening on " + port);

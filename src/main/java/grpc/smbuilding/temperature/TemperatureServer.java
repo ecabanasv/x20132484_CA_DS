@@ -31,14 +31,17 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 
 		TemperatureServer temperatureserver = new TemperatureServer();
 
+		// Get services properties from /smbuilding/src/main/resources/temperature/temperature.properties
 		Properties prop = temperatureserver.getProperties();
 
+		// Register TemperatureService
 		temperatureserver.registerService(prop);
 
 		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50053;
 
 		try {
 
+			// Add TemperatureService
 			Server server = ServerBuilder.forPort(port).addService(temperatureserver).build().start();
 
 			System.out.println("Temperature Server started, listening on " + port);
