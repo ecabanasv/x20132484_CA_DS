@@ -87,14 +87,13 @@ public class BookingServer extends BookingServiceImplBase {
 			// Create a JmDNS instance
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 
-			String service_type = prop.getProperty("service_type");// "_http._tcp.local.";
+			String service_type = prop.getProperty("service_type");
 			
-			String service_name = prop.getProperty("service_name");// "example";
+			String service_name = prop.getProperty("service_name");
 			
-			// int service_port = 1234;
 			int service_port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
 
-			String service_description_properties = prop.getProperty("service_description");// "path=index.html";
+			String service_description_properties = prop.getProperty("service_description");
 
 			// Register a service
 			ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
@@ -103,7 +102,6 @@ public class BookingServer extends BookingServiceImplBase {
 
 			System.out.printf("Registering service with type %s and name %s \n", service_type, service_name);
 
-			// Wait a bit
 			Thread.sleep(1000);
 
 
