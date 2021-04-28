@@ -11,7 +11,6 @@ import javax.net.ssl.SSLException;
 // Swing Libraries
 import javax.swing.*;
 
-
 // gRPC Libraries
 import grpc.smbuilding.booking.BookingGUI;
 import grpc.smbuilding.occupancy.OccupancyGUI;
