@@ -224,9 +224,9 @@ public class TemperatureGUI extends JFrame {
 			@Override
 			public void onNext(CheckTemperatureResponse value) {
 				
-				result1 = "Average temperature: " + value.getAverage() + "C";
+				result1 = "Average temperature: " + value.getAverage() + "C\n";
 				
-				System.out.println("\nAverage temperature: " + value.getAverage() + "\n");
+				System.out.println(result1);
 				
 			}
 

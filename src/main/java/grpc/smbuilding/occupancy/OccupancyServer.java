@@ -148,7 +148,7 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 						
 						if (id == request.getRoom())
 						{
-							String result = "Request received... Occupancy of Room (" + id + ") is at " + occupancy + "%";
+							String result = "Occupancy of Room (" + id + ") is at " + occupancy + "%";
 							
 				            OccupancyManyResponse reply = OccupancyManyResponse.newBuilder().setResult(result).build();
 						      

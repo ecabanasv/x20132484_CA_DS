@@ -223,7 +223,7 @@ public class OccupancyGUI extends JFrame {
 			public void onCompleted() {
 				
 				// TODO Auto-generated method stub
-				System.out.println("\nRequest completed.");
+				System.out.println("\nRequest completed.\n");
 			}
 
 		};

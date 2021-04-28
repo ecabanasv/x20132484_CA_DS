@@ -224,7 +224,7 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 					
 					String temperature = String.valueOf(room.get("temperature").toString());
 						
-					String result = "Room (" + id + "): " + temperature + " Celsius";
+					String result = "Temperature of Room (" + id + ") is " + temperature + "C";
 						
 					responseObserver.onNext(TemperatureReportResponse.newBuilder().setResult(result).build());
 						
