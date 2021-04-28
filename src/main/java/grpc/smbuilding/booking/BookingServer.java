@@ -44,7 +44,7 @@ public class BookingServer extends BookingServiceImplBase {
 			// Add BookingService
 			Server server = ServerBuilder.forPort(port).addService(bookingserver).build().start();
 
-			System.out.println("Booking Server started, listening on " + port);
+			System.out.println("\nBooking Server started, listening on " + port);
 
 			server.awaitTermination();
 

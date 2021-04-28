@@ -44,7 +44,7 @@ public class OccupancyServer extends OccupancyServiceImplBase {
 			// Add OccupancyService
 			Server server = ServerBuilder.forPort(port).addService(occupancyserver).build().start();
 
-			System.out.println("Occupancy Server started, listening on " + port);
+			System.out.println("\nOccupancy Server started, listening on " + port);
 
 			server.awaitTermination();
 

@@ -44,7 +44,7 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 			// Add TemperatureService
 			Server server = ServerBuilder.forPort(port).addService(temperatureserver).build().start();
 
-			System.out.println("Temperature Server started, listening on " + port);
+			System.out.println("\nTemperature Server started, listening on " + port);
 
 			server.awaitTermination();
 
