@@ -205,6 +205,7 @@ public class OccupancyGUI extends JFrame {
 
 		StreamObserver<OccupancyManyResponse> responseObserver = new StreamObserver<OccupancyManyResponse>() {
 			
+			
 			@Override
 			public void onNext(OccupancyManyResponse value) {
 						

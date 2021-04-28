@@ -194,7 +194,7 @@ public class TemperatureGUI extends JFrame {
 		
 		btnCalculate2.addActionListener(new ActionListener() {
 			
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {		
 				
 				temperatureReport();
 				
@@ -241,9 +241,7 @@ public class TemperatureGUI extends JFrame {
 			@Override
 			public void onCompleted() {
 				
-				System.out.println("\nRequest completed.");
-				
-				System.out.println("");
+				System.out.println("\nRequest completed.\n");
 				
 			}
 
@@ -315,7 +313,7 @@ public class TemperatureGUI extends JFrame {
 
 		try {
 				
-			Thread.sleep(1);
+			Thread.sleep(0);
 				
 		} catch (InterruptedException e) {
 				

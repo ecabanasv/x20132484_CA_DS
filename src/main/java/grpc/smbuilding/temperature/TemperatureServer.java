@@ -223,16 +223,13 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 					int id = Integer.parseInt(room.get("id").toString());
 					
 					String temperature = String.valueOf(room.get("temperature").toString());
-					
 						
-						String result = "Room (" + id + "): " + temperature + " Celsius";
+					String result = "Room (" + id + "): " + temperature + " Celsius";
 						
-						responseObserver.onNext(TemperatureReportResponse.newBuilder().setResult(result).build());
+					responseObserver.onNext(TemperatureReportResponse.newBuilder().setResult(result).build());
 						
-					
 				}
 				
-			responseObserver.onCompleted();
 	 
 	        } catch (FileNotFoundException e) {
 	        	
@@ -247,5 +244,8 @@ public class TemperatureServer extends TemperatureServiceImplBase {
 	            e.printStackTrace();
 	            
 	        }
+	        
+	        responseObserver.onCompleted();
+
 	}
 }
