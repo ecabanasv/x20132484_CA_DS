@@ -203,7 +203,7 @@ public class BookingGUI extends JFrame {
 		
 		textRoom.setColumns(10);
 			
-		JButton btnCalculate = new JButton("Book room");
+		JButton btnCalculate = new JButton("Check room");
 		
 		btnCalculate.addActionListener(new ActionListener() {
 			
