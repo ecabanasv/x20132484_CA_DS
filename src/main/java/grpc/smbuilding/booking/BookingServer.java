@@ -97,9 +97,7 @@ public class BookingServer extends BookingServiceImplBase {
 			String service_description_properties = prop.getProperty("service_description");// "path=index.html";
 
 			// Register a service
-			ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port,
-					
-					service_description_properties);
+			ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
 			
 			jmdns.registerService(serviceInfo);
 
