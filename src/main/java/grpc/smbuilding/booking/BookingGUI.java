@@ -44,9 +44,6 @@ public class BookingGUI extends JFrame {
 	// Blockingstub gRPC
 	private static BookingServiceGrpc.BookingServiceBlockingStub blockingStub;
 	
-	// jmDNS info
-	private ServiceInfo bookingServiceInfo;
-	
 	// Interface
 	private JFrame frame;
 	private JTextArea textResponse;

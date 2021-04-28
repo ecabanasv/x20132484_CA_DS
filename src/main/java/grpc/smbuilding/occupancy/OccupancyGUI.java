@@ -42,8 +42,6 @@ public class OccupancyGUI extends JFrame {
 	
 	private static String result = "";
 	
-	private ServiceInfo occupancyServiceInfo;
-	
 	private JFrame frame;
 	
 	private JTextArea textResponse;

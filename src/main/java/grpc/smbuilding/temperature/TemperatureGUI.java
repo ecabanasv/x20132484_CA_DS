@@ -44,8 +44,6 @@ public class TemperatureGUI extends JFrame {
 	
 	private static String result2 = "";
 	
-	private ServiceInfo temperatureServiceInfo;
-	
 	private JFrame frame;
 	
 	private JTextArea textResponse;
