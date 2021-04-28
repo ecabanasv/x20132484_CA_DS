@@ -183,21 +183,25 @@ public class BookingGUI extends JFrame {
 		
 		panel_service_1.add(lblNewLabel_1);
 		
-        NumberFormat  format = NumberFormat.getInstance();
-        
-        format.setParseIntegerOnly(true);
-
-        NumberFormatter formatter = new NumberFormatter(format);
-        
-        formatter.setMinimum(1);
-        
-        formatter.setMaximum(10);
-        
-        formatter.setAllowsInvalid(false);
-        
-        formatter.setOverwriteMode(true); 
+		// Only allow numbers between 1 and 10 in textField
 		
-        JFormattedTextField textRoom = new JFormattedTextField(formatter);
+        NumberFormat  formatRoom = NumberFormat.getInstance();
+        
+        formatRoom.setParseIntegerOnly(true);
+
+        NumberFormatter formatField = new NumberFormatter(formatRoom);
+        
+        formatField.setMinimum(1);
+        
+        formatField.setMaximum(10);
+        
+        formatField.setAllowsInvalid(false);
+        
+        formatField.setOverwriteMode(true); 
+		
+        JFormattedTextField textRoom = new JFormattedTextField(formatField);
+        
+        //
 		
 		panel_service_1.add(textRoom);
 		
@@ -211,23 +215,13 @@ public class BookingGUI extends JFrame {
 				
 				int numRoom = Integer.parseInt(textRoom.getText().toString());
 				
-				if (numRoom >= 1 && numRoom <= 10) {
-				
-					BookingRequest req = BookingRequest.newBuilder().setNumRoom(numRoom).build();
+				BookingRequest req = BookingRequest.newBuilder().setNumRoom(numRoom).build();
 	
-					BookingResponse response = blockingStub.booking(req);
+				BookingResponse response = blockingStub.booking(req);
 	
-					textResponse.append(response.getResult() + "\n");
+				textResponse.append(response.getResult() + "\n");
 					
-					System.out.println("res: " + response.getResult());
-				
-				}
-				
-				else {
-					
-				textResponse.append("Room not found, please enter room number between 1 to 10.\n");
-				
-				}
+				System.out.println("res: " + response.getResult());
 
 			}
 		});
@@ -243,13 +237,6 @@ public class BookingGUI extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(textResponse);
 		
 		panel_service_1.add(scrollPane);
-		
-//		frame.addWindowListener(new WindowAdapter() {
-//	        public void windowClosing(WindowEvent we) {
-//	            dispose();
-//	         }
-//	     }
-//	    );
 		
 		frame.setVisible(true);
 	}
