@@ -161,9 +161,7 @@ public class TemperatureGUI extends JFrame {
 		
 		frame.setTitle("Service: Temperature report");
 		
-		frame.setBounds(100, 100, 500, 300);
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 300, 550, 300);
 		
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
 		
@@ -228,7 +226,7 @@ public class TemperatureGUI extends JFrame {
 				
 				result1 = "Average temperature: " + value.getAverage() + "C";
 				
-				System.out.println("\nAverage temperature: " + value.getAverage());
+				System.out.println("\nAverage temperature: " + value.getAverage() + "\n");
 				
 			}
 

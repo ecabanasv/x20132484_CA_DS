@@ -167,9 +167,7 @@ public class BookingGUI extends JFrame {
 		
 		frame.setTitle("Service: Check Room");
 		
-		frame.setBounds(100, 100, 500, 200);
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 550, 200);
 		
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
 		
@@ -245,6 +243,13 @@ public class BookingGUI extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(textResponse);
 		
 		panel_service_1.add(scrollPane);
+		
+//		frame.addWindowListener(new WindowAdapter() {
+//	        public void windowClosing(WindowEvent we) {
+//	            dispose();
+//	         }
+//	     }
+//	    );
 		
 		frame.setVisible(true);
 	}

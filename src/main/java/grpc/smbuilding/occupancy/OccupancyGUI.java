@@ -158,9 +158,7 @@ public class OccupancyGUI extends JFrame {
 		
 		frame.setTitle("Service: Occupancy report");
 		
-		frame.setBounds(100, 100, 500, 300);
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(650, 100, 500, 300);
 		
 		BoxLayout bl = new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS);
 		
