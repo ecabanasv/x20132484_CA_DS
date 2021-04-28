@@ -3,70 +3,60 @@
     {
 		"id": "1",
 		"name": "Room 1",
-		"slots": 10,
 		"occupancy": 50,
 		"temperature": 12
     },
     {
 		"id": "2",
 		"name": "Room 2",
-		"slots": 10,
 		"occupancy": 75,
 		"temperature": 14
     },
     {
 		"id": "3",
 		"name": "Room 3",
-		"slots": 10,
 		"occupancy": 100,
 		"temperature": 16
     },
     {
 		"id": "4",
 		"name": "Room 4",
-		"slots": 10,
 		"occupancy": 25,
 		"temperature": 8
     },
     {
 		"id": "5",
 		"name": "Room 5",
-		"slots": 10,
 		"occupancy": 100,
 		"temperature": 15
     },
     {
 		"id": "6",
 		"name": "Room 6",
-		"slots": 10,
 		"occupancy": 25,
 		"temperature": 5
     },
     {
 		"id": "7",
 		"name": "Room 7",
-		"slots": 10,
 		"occupancy": 50,
 		"temperature": 20
     },
     {
 		"id": "8",
 		"name": "Room 8",
-		"slots": 10,
 		"occupancy": 0,
 		"temperature": 11
     },
     {
 		"id": "9",
 		"name": "Room 9",
-		"slots": 10,
 		"occupancy": 100,
 		"temperature": 19
     },
     {
 		"id": "10",
 		"name": "Room 10",
-		"slots": 10,
 		"occupancy": 25,
 		"temperature": 3
     }
