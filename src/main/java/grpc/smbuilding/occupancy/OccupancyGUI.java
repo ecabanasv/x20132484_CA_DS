@@ -99,21 +99,6 @@ public class OccupancyGUI extends JFrame {
 					
 					System.out.println("Occupancy Service resolved: " + event.getInfo());
 
-					occupancyServiceInfo = event.getInfo();
-
-					int port = occupancyServiceInfo.getPort();
-					
-					System.out.println("resolving " + service_type + " with properties ...");
-					
-					System.out.println("\t port: " + port);
-					
-					System.out.println("\t type:"+ event.getType());
-					
-					System.out.println("\t name: " + event.getName());
-					
-					System.out.println("\t description/properties: " + occupancyServiceInfo.getNiceTextString());
-					
-					System.out.println("\t host: " + occupancyServiceInfo.getHostAddresses()[0]);	
 				}
 				
 				@Override

@@ -49,7 +49,6 @@ public class BookingGUI extends JFrame {
 	
 	// Interface
 	private JFrame frame;
-	private JTextField textRoom;
 	private JTextArea textResponse;
 	
 	
@@ -106,22 +105,7 @@ public class BookingGUI extends JFrame {
 				public void serviceResolved(ServiceEvent event) {
 					
 					System.out.println("Booking Service resolved: " + event.getInfo());
-
-					bookingServiceInfo = event.getInfo();
-
-					int port = bookingServiceInfo.getPort();
 					
-					System.out.println("resolving " + service_type + " with properties ...");
-					
-					System.out.println("\t port: " + port);
-					
-					System.out.println("\t type:"+ event.getType());
-					
-					System.out.println("\t name: " + event.getName());
-					
-					System.out.println("\t description/properties: " + bookingServiceInfo.getNiceTextString());
-					
-					System.out.println("\t host: " + bookingServiceInfo.getHostAddresses()[0]);	
 				}
 				
 				@Override
@@ -183,7 +167,7 @@ public class BookingGUI extends JFrame {
 		
 		panel_service_1.add(lblNewLabel_1);
 		
-		// Only allow numbers between 1 and 10 in textField
+		// Only allow integer numbers between 1 and 10 in textField
 		
         NumberFormat  formatRoom = NumberFormat.getInstance();
         
@@ -221,7 +205,7 @@ public class BookingGUI extends JFrame {
 	
 				textResponse.append(response.getResult() + "\n");
 					
-				System.out.println("res: " + response.getResult());
+				System.out.println(response.getResult());
 
 			}
 		});

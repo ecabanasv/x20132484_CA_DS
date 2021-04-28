@@ -101,21 +101,6 @@ public class TemperatureGUI extends JFrame {
 					
 					System.out.println("Temperature Service resolved: " + event.getInfo());
 
-					temperatureServiceInfo = event.getInfo();
-
-					int port = temperatureServiceInfo.getPort();
-					
-					System.out.println("resolving " + service_type + " with properties ...");
-					
-					System.out.println("\t port: " + port);
-					
-					System.out.println("\t type:"+ event.getType());
-					
-					System.out.println("\t name: " + event.getName());
-					
-					System.out.println("\t description/properties: " + temperatureServiceInfo.getNiceTextString());
-					
-					System.out.println("\t host: " + temperatureServiceInfo.getHostAddresses()[0]);	
 				}
 				
 				@Override
