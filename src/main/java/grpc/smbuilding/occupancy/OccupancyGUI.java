@@ -24,7 +24,6 @@ import javax.net.ssl.SSLException;
 // jmDNS Libraries
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
-import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
 
 // gRPC Libraries

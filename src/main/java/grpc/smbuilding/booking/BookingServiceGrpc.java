@@ -16,6 +16,9 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
+ * <pre>
+ * Unary
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
@@ -83,6 +86,9 @@ public final class BookingServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Unary
+   * </pre>
    */
   public static abstract class BookingServiceImplBase implements io.grpc.BindableService {
 
@@ -107,6 +113,9 @@ public final class BookingServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Unary
+   * </pre>
    */
   public static final class BookingServiceStub extends io.grpc.stub.AbstractStub<BookingServiceStub> {
     private BookingServiceStub(io.grpc.Channel channel) {
@@ -134,6 +143,9 @@ public final class BookingServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Unary
+   * </pre>
    */
   public static final class BookingServiceBlockingStub extends io.grpc.stub.AbstractStub<BookingServiceBlockingStub> {
     private BookingServiceBlockingStub(io.grpc.Channel channel) {
@@ -160,6 +172,9 @@ public final class BookingServiceGrpc {
   }
 
   /**
+   * <pre>
+   * Unary
+   * </pre>
    */
   public static final class BookingServiceFutureStub extends io.grpc.stub.AbstractStub<BookingServiceFutureStub> {
     private BookingServiceFutureStub(io.grpc.Channel channel) {
